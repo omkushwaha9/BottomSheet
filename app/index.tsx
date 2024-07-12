@@ -22,12 +22,12 @@ export default function index() {
   const [darkmode, setDarkmode] = useState(false);
   const [device, setDevice] = useState(false);
   const { width } = useWindowDimensions();
-  const [theme, setTheme] = useState("dim");
+  const [theme, setTheme] = useState("black");
   const [isOpen, setIsOpen] = useState(false);
 
   const bottomSheetModalRef = useRef(null);
 
-  const snapPoints = ["25%", "48%", "75%"];
+  const snapPoints = ["25%", "50%", "75%"];
 
   function handlePresentModal() {
     bottomSheetModalRef.current?.present();
@@ -42,7 +42,7 @@ export default function index() {
         <View
           style={[
             styles.container,
-            { backgroundColor: isOpen ? "black" : "white" },
+            { backgroundColor: isOpen ? "grey" : "white" },
           ]}
         >
           <Button title="Present Modal" onPress={handlePresentModal} />
@@ -77,14 +77,14 @@ export default function index() {
                 style={{
                   width: width,
                   borderBottomWidth: StyleSheet.hairlineWidth,
-                  borderBottomColor: "gray",
+                  borderBottomColor: "grey",
                   marginVertical: 30,
                 }}
               />
               <Text style={[styles.title, { width: "100%" }]}>Theme</Text>
-              <Pressable style={styles.row} onPress={() => setTheme("dim")}>
-                <Text style={styles.subtitle}>Dim</Text>
-                {theme === "dim" ? (
+              <Pressable style={styles.row} onPress={() => setTheme("black")}>
+                <Text style={styles.subtitle}>Dark</Text>
+                {theme === "black" ? (
                   <AntDesign name="checkcircle" size={24} color="#4A98E9" />
                 ) : (
                   <Entypo name="circle" size={24} color="#56636F" />
